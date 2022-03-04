@@ -1,0 +1,41 @@
+main {
+  display: flex;
+}
+
+
+h1 {
+  border-bottom: 1px solid #ccc
+}
+
+h1, h2, h3 {
+  margin-top: 0;
+}
+
+.aside {
+  padding: 0 5px;
+  border: 1px solid black;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  padding: 0px 10px 10px 10px;
+  border: 1px solid black;
+  width: 420px;
+}
+
+
+.articles {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 10px 10px 10px;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+article {
+  width: 33%;
+}
+

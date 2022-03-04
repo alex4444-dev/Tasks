@@ -1,0 +1,12 @@
+.topbar {
+  justify-content: space-between;
+}
+
+a {
+  font-size: 18px
+}
+
+.aside {
+  padding: 0 5px;
+  border: 1px solid black;
+}
