@@ -1,31 +1,53 @@
-import React from 'react';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import './App.css';
-import { TopBar } from './Components/Topbar/TopBar'
-import { Sidebar } from './Components/Sidebar/Sidebar'
-import { MainBlock } from './Components/MainBlock/MainBlock'
-import { Footer } from './Components/Footer/Footer'
-
+import { Posts } from './Components/Posts/Posts'
+import { LoginForm } from './Components/LoginForm/LoginForm'
+import { Header } from './Components/Header/Header'
 
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userName, setUserName] = useState('');
 
   return (
-    <div className="App">
-      <div>
-        <div className="content">
-          <div className="sidebar">
-            <Sidebar />
-          </div>
-          <div className="aside">
-            <TopBar />
-            <hr />
-            <MainBlock />
-            <hr />
-            <Footer />
-          </div>
-        </div>
-      </div>
-    </div>
+    <Router>
+      <div className="App">
+        <Header userName={userName}
+        />
+
+        <main>
+          <Routes>
+            <Route exact path='/' render={() => {
+              if (isLoggedIn) return <Navigate to='/posts' />;
+              return <Navigate to='/loginForm' />;
+            }} />
+
+            <Route path='/login'
+              render={() => <LoginForm />} />
+
+            <Route path='/posts'
+              render={() => <Posts />} />
+
+
+          </Routes>
+        </main>
+
+
+        {
+          isLoggedIn ? (
+            <>
+              <Posts />
+            </>
+          ) : (
+            <LoginForm
+              setIsLoggedIn={setIsLoggedIn}
+              setUserName={setUserName} />
+          )
+        }
+      </div >
+    </Router>
+
   )
 }
 
